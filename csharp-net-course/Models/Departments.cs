@@ -1,8 +1,8 @@
 ﻿namespace csharp_net_course.Models
 {
-    public class Department
+    public class Departments
     {
         public int Id { get; set; }
-        public String Name { get; set; }
+        public string Name { get; set; }
     }
 }
