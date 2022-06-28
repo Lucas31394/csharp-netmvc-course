@@ -26,9 +26,13 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-var serviceScope = app.Services.CreateScope();
-var service = serviceScope.ServiceProvider.GetService<SeedingService>();
-service.Seed();
+if (app.Environment.IsDevelopment())
+{
+    var serviceScope = app.Services.CreateScope();
+    var service = serviceScope.ServiceProvider.GetService<SeedingService>();
+    service.Seed();
+}
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
