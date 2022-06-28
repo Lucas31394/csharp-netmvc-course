@@ -1,4 +1,9 @@
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using csharp_net_course.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<csharp_net_courseContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("csharp_net_courseContext") ?? throw new InvalidOperationException("Connection string 'csharp_net_courseContext' not found.")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
