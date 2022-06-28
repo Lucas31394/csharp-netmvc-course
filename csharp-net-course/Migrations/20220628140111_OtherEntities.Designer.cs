@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using csharp_net_course.Data;
 
@@ -10,9 +11,10 @@ using csharp_net_course.Data;
 namespace csharp_net_course.Migrations
 {
     [DbContext(typeof(csharp_net_courseContext))]
-    partial class csharp_net_courseContextModelSnapshot : ModelSnapshot
+    [Migration("20220628140111_OtherEntities")]
+    partial class OtherEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
