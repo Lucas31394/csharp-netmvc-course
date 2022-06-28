@@ -18,6 +18,13 @@ namespace csharp_net_course.Controllers
             return View();
         }
 
+        public IActionResult About()
+        {
+            ViewData["Message"] = "Sales Web MVC App from c# course";
+
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
