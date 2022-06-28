@@ -1,4 +1,4 @@
-namespace csharp_net_course.Models
+namespace csharp_net_course.Models.ViewModels
 {
     public class ErrorViewModel
     {

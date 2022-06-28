@@ -1,4 +1,4 @@
-﻿using csharp_net_course.Models;
+﻿using csharp_net_course.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
