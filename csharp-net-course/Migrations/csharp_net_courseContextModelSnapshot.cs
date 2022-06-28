@@ -9,7 +9,7 @@ using csharp_net_course.Data;
 
 namespace csharp_net_course.Migrations
 {
-    [DbContext(typeof(csharp_net_courseContext))]
+    [DbContext(typeof(Csharp_net_courseContext))]
     partial class csharp_net_courseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

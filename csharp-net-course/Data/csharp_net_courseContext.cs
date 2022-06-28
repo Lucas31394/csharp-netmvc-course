@@ -7,9 +7,9 @@ using csharp_net_course.Models;
 
 namespace csharp_net_course.Data
 {
-    public class csharp_net_courseContext : DbContext
+    public class Csharp_net_courseContext : DbContext
     {
-        public csharp_net_courseContext (DbContextOptions<csharp_net_courseContext> options)
+        public Csharp_net_courseContext (DbContextOptions<Csharp_net_courseContext> options)
             : base(options)
         {
         }

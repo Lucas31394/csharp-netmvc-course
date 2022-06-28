@@ -9,7 +9,7 @@ using csharp_net_course.Data;
 
 namespace csharp_net_course.Migrations
 {
-    [DbContext(typeof(csharp_net_courseContext))]
+    [DbContext(typeof(Csharp_net_courseContext))]
     [Migration("20220628130543_Initial")]
     partial class Initial
     {

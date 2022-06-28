@@ -12,9 +12,9 @@ namespace csharp_net_course.Controllers
 {
     public class DepartmentsController : Controller
     {
-        private readonly csharp_net_courseContext _context;
+        private readonly Csharp_net_courseContext _context;
 
-        public DepartmentsController(csharp_net_courseContext context)
+        public DepartmentsController(Csharp_net_courseContext context)
         {
             _context = context;
         }
