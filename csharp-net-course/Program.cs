@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using csharp_net_course.Data;
 using Microsoft.Extensions.Configuration;
+using csharp_net_course.Services;
 
 
 // Configure Services.
@@ -15,6 +16,7 @@ builder.Services.AddDbContext<Csharp_net_courseContext>(options =>
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<SeedingService>();
+builder.Services.AddScoped<SellerService>();
 
 var app = builder.Build();
 
