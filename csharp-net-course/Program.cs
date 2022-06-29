@@ -3,6 +3,8 @@ using Microsoft.Extensions.DependencyInjection;
 using csharp_net_course.Data;
 using Microsoft.Extensions.Configuration;
 using csharp_net_course.Services;
+using System.Globalization;
+using Microsoft.AspNetCore.Localization;
 
 
 // Configure Services.
@@ -35,6 +37,16 @@ if (app.Environment.IsDevelopment())
     var service = serviceScope.ServiceProvider.GetService<SeedingService>();
     service.Seed();
 }
+
+var enUS = new CultureInfo("en-US");
+var localizationOptions = new RequestLocalizationOptions
+{
+    DefaultRequestCulture = new RequestCulture(enUS),
+    SupportedCultures = new List<CultureInfo> { enUS },
+    SupportedUICultures = new List<CultureInfo> { enUS }
+};
+
+app.UseRequestLocalization(localizationOptions);
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
