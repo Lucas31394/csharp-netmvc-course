@@ -1,5 +1,6 @@
 ﻿using csharp_net_course.Data;
 using csharp_net_course.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace csharp_net_course.Services
 {
@@ -25,7 +26,7 @@ namespace csharp_net_course.Services
 
         public Seller FindById(int id)
         {
-            return _context.Seller.FirstOrDefault(seller => seller.Id == id);
+            return _context.Seller.Include(obj => obj.Department).FirstOrDefault(seller => seller.Id == id);
         }
 
         public void Remove(int id)
