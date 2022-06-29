@@ -3,6 +3,7 @@ using csharp_net_course.Models.ViewModels;
 using csharp_net_course.Services;
 using csharp_net_course.Services.Exceptions;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 namespace csharp_net_course.Controllers
 {
@@ -43,12 +44,12 @@ namespace csharp_net_course.Controllers
         {
             if (id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not provided." });
             }
             var seller = _sellerService.FindById(id.Value);
             if (seller == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not found." });
             }
             return View(seller);
         }
@@ -65,12 +66,12 @@ namespace csharp_net_course.Controllers
         {
             if(id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not provided." });
             }
             var seller = _sellerService.FindById(id.Value);
             if(seller == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not found." });
             }
             return View(seller);
         }
@@ -79,12 +80,12 @@ namespace csharp_net_course.Controllers
         {
             if(id == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not provided." });
             }
             var seller = _sellerService.FindById(id.Value);
             if(seller == null)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = "Id not found." });
             }
             List<Department> departments = _departmentService.FindAll();
             SellerFormViewModel viewModel = new SellerFormViewModel { Seller = seller, Departments = departments};
@@ -98,21 +99,25 @@ namespace csharp_net_course.Controllers
         {
             if(id != seller.Id)
             {
-                return BadRequest();
+                return RedirectToAction(nameof(Error), new { message = "Id mismatch." });
             }
             try
             {
                 _sellerService.Update(seller);
                 return RedirectToAction(nameof(Index));
             }
-            catch(NotFoundException)
+            catch(ApplicationException e)
             {
-                return NotFound();
+                return RedirectToAction(nameof(Error), new { message = e.Message });
             }
-            catch(DbConcurrencyException)
-            {
-                return BadRequest();
-            }
+            
+        }
+
+        public IActionResult Error(string message)
+        {
+            var viewModel = new ErrorViewModel { Message = message, RequestId = Activity.Current.Id ?? HttpContext.TraceIdentifier };
+
+            return View(viewModel);
         }
 
     }
